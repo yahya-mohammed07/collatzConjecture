@@ -29,19 +29,21 @@ auto collatz (const long n) -> const std::vector<long>
     //check if the vec is not empty then check if the lastest element is 1 then stop
     while (!vec.empty() && vec.back() != 1)
     {
+        // store the latest element to a void multiple calling
+        long latest = vec.back();
         // if the lastest element is even ...
-        if (vec.back() % 2 == 0)
+        if (latest % 2 == 0)
         {
             // then divide it with 2
-            vec.push_back(vec.back() / 2);
+            vec.push_back(latest / 2);
         }
         else 
         {
             // else triple it  add 1 then divide it by 2
-            vec.push_back((3 * vec.back()) + 1); // 3n + 1 / 2 for less steps
+            vec.push_back((3 * latest) + 1); // 3n + 1 / 2 for less steps
         }
         global_steps++;
-        if (vec.back() > global_largest) global_largest = vec.back();
+        if (latest > global_largest) global_largest = latest;
     }
     return vec;
 }
