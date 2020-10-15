@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
-
+// global vars
+long global_steps = 0;
+long global_largest = 0;
+//
 auto collatz (const long n) -> const std::vector<long>;
 // driver code
 auto main() -> int
@@ -9,11 +12,13 @@ auto main() -> int
     long n = 0;
     std::cin >> n;
     //
-    for (const auto i: collatz(n))
+    for (const auto& i: collatz(n))
     {
         std::cout << i << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n' << '\n';
+    std::cout << "Steps: " << global_steps << '\n'
+    << "Largest number: " << global_largest << std::endl;
 }
 //
 auto collatz (const long n) -> const std::vector<long>
@@ -32,9 +37,11 @@ auto collatz (const long n) -> const std::vector<long>
         }
         else 
         {
-            // else triple it then add 1
-            vec.push_back((3 * vec.back()) + 1);
+            // else triple it  add 1 then divide it by 2
+            vec.push_back((3 * vec.back()) + 1); // 3n + 1 / 2 for less steps
         }
+        global_steps++;
+        if (vec.back() > global_largest) global_largest = vec.back();
     }
     return vec;
 }
