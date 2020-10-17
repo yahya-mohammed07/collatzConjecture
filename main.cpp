@@ -30,7 +30,7 @@ auto collatz (const unsigned long long& n) -> const std::vector<unsigned long lo
     while (!vec.empty() && vec.back() != 1)
     {
         // store the latest element to a void multiple calling
-        long latest = vec.back();
+        unsigned long long latest = vec.back();
         // if the lastest element is even ...
         if (latest % 2 == 0)
         {
