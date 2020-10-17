@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
 // global vars
-long global_steps = 0;
-long global_largest = 0;
+unsigned long global_steps = 0;
+unsigned long long global_largest = 0;
 //
-auto collatz (const long n) -> const std::vector<long>;
+auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>;
 // driver code
 auto main() -> int
 {
     std::cout << "enter a number: ";
-    long n = 0;
+    unsigned long long n = 0;
     std::cin >> n;
     //
     for (const auto& i: collatz(n))
@@ -21,9 +21,9 @@ auto main() -> int
     << "Largest number: " << global_largest << std::endl;
 }
 //
-auto collatz (const long n) -> const std::vector<long>
+auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>
 {
-    std::vector<long> vec;
+    std::vector<unsigned long long> vec;
     // added n to the vector vec
     vec.push_back(n);
     //check if the vec is not empty then check if the lastest element is 1 then stop
