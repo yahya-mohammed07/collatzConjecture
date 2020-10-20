@@ -1,15 +1,16 @@
+#include <cstdint>
 #include <iostream>
 #include <vector>
 // global vars
-unsigned long g_steps = 0;
-unsigned long long g_largest = 0;
-//
-auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>;
+std::uint32_t g_steps = 0;
+std::uint64_t g_largest = 0;
+// prototypes
+auto collatz (const std::uint64_t& n) -> const std::vector<std::uint64_t>;
 // driver code
 auto main() -> int
 {
     std::cout << "enter a number: ";
-    unsigned long long n = 0;
+    std::uint64_t n = 0;
     std::cin >> n;
     //
     for (const auto& i: collatz(n))
@@ -20,17 +21,17 @@ auto main() -> int
     std::cout << "Steps: " << g_steps << '\n'
     << "Largest number: " << g_largest << std::endl;
 }
-//
-auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>
+// implementation
+auto collatz (const std::uint64_t& n) -> const std::vector<std::uint64_t>
 {
-    std::vector<unsigned long long> vec;
+    std::vector<std::uint64_t> vec;
     // added n to the vector vec
     vec.push_back(n);
     //check if the vec is not empty then check if the lastest element is 1 then stop
     while (!vec.empty() && vec.back() != 1)
     {
         // store the latest element to a void multiple calling
-        unsigned long long latest = vec.back();
+        std::uint64_t latest = vec.back();
         // if the lastest element is even ...
         if (latest % 2 == 0)
         {
