@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 // global vars
-unsigned long global_steps = 0;
-unsigned long long global_largest = 0;
+unsigned long g_steps = 0;
+unsigned long long g_largest = 0;
 //
 auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>;
 // driver code
@@ -17,8 +17,8 @@ auto main() -> int
         std::cout << i << " ";
     }
     std::cout << '\n' << '\n';
-    std::cout << "Steps: " << global_steps << '\n'
-    << "Largest number: " << global_largest << std::endl;
+    std::cout << "Steps: " << g_steps << '\n'
+    << "Largest number: " << g_largest << std::endl;
 }
 //
 auto collatz (const unsigned long long& n) -> const std::vector<unsigned long long>
@@ -42,8 +42,8 @@ auto collatz (const unsigned long long& n) -> const std::vector<unsigned long lo
             // else triple it  add 1 then divide it by 2
             vec.push_back((3 * latest) + 1); // 3n + 1 / 2 for less steps
         }
-        global_steps++;
-        if (latest > global_largest) global_largest = latest;
+        g_steps++;
+        if (latest > g_largest) g_largest = latest;
     }
     return vec;
 }
