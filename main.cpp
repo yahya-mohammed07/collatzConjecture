@@ -1,4 +1,3 @@
-#include <cstdint>
 #include <iostream>
 #include <vector>
 // global vars
@@ -13,7 +12,7 @@ auto main() -> int
     std::uint64_t n = 0;
     std::cin >> n;
     //
-    for (const auto& i: collatz(n))
+    for (const auto& i : collatz(n))
     {
         std::cout << i << " ";
     }
