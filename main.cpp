@@ -4,7 +4,7 @@
 std::uint32_t g_steps = 0;
 std::uint64_t g_largest = 0;
 // prototypes
-auto collatz (const std::uint64_t& n) -> const std::vector<std::uint64_t>;
+auto collatz (const std::uint64_t& n) -> std::vector<std::uint64_t>;
 // driver code
 auto main() -> int
 {
@@ -14,14 +14,14 @@ auto main() -> int
     //
     for (const auto& i : collatz(n))
     {
-        std::cout << i << " ";
+        std::cout << i << ' ';
     }
     std::cout << '\n' << '\n';
     std::cout << "Steps: " << g_steps << '\n'
-    << "Largest number: " << g_largest << std::endl;
+    << "Largest number: " << g_largest << '\n';
 }
 // implementation
-auto collatz (const std::uint64_t& n) -> const std::vector<std::uint64_t>
+auto collatz (const std::uint64_t& n) -> std::vector<std::uint64_t>
 {
     std::vector<std::uint64_t> vec;
     // added n to the vector vec
